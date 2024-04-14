@@ -86,8 +86,8 @@ component sevenSegDecoder is
             );
             end component sevenSegDecoder;
   -- create wire to connect button to 7SD enable (active-low)
-      signal w_seg : std_logic_vector (6 downto 0) :=(others =>'0');
-      signal w_sw : std_logic_vector (3 downto 0) :=(others =>'0');
+      --signal w_seg : std_logic_vector (6 downto 0) :=(others =>'0');
+      --signal w_sw : std_logic_vector (3 downto 0) :=(others =>'0');
       signal wire : std_logic := '0';
 
   
@@ -103,12 +103,12 @@ begin
 	i_D(3) => sw(3),
 	
 	o_S(0) => seg(0),
-	o_S(1) => w_seg(1),
-    o_S(2) => w_seg(2),
-    o_S(3) => w_seg(3),
-    o_S(4) => w_seg(4),
-    o_S(5) => w_seg(5),
-    o_S(6) => w_seg(6)
+	o_S(1) => seg(1),
+    o_S(2) => seg(2),
+    o_S(3) => seg(3),
+    o_S(4) => seg(4),
+    o_S(5) => seg(5),
+    o_S(6) => seg(6)
 	);
 	-----------------------------------------------------	
 	
@@ -117,7 +117,11 @@ begin
 	-- wire up active-low 7SD anode (active low) to button (active-high)
 	-- display 7SD 0 only when button pushed
 	-- other 7SD are kept off
-	an(0) <= not wire;
+	wire <= not btnC;
+	an(0) <= wire;
+	an(1) <= '1';
+	an(2) <= '1';
+	an(3) <= '1';
 	-----------------------------------------------------
 	
 end top_basys3_arch;

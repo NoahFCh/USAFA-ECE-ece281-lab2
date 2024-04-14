@@ -56,7 +56,7 @@ begin
     
     c_Sa <= (not i_D(3) and not i_D(2) and not i_D(1) and i_D(0))
           or(i_D(3) and not i_D(2) and i_D(1) and i_D(0))
-          or(i_D(2) and not i_D(1) and i_D(0))
+          or(i_D(2) and not i_D(1) and not i_D(0))
           or(i_D(3) and i_D(2) and not i_D(1));
     c_Sb <= (i_D(0) and not i_D(1) and i_D(2) and not i_D(3))
           or(not i_D(0) and i_D(2) and i_D(3))
